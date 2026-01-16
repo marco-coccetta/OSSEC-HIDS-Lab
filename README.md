@@ -10,7 +10,7 @@ Active Response automatico (iptables DROP)
 Threat hunting su attacchi reali
 
 ## Architettura
-
+```text
 Azure West Europe
 ├── Resource Group: RG-CyberLab
 ├── Virtual Machine: Ubuntu 22.04 LTS (B1s)
@@ -23,6 +23,7 @@ Azure West Europe
 │   └── Network Security Group:
 │       └── Inbound: SSH (22) → Open (test ambiente reale)
 └── Storage: Screenshots + log estratti
+```
 
 
 ## Guida riproducibile
