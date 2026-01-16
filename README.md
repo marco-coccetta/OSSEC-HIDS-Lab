@@ -42,21 +42,28 @@ wget -q -O - https://updates.atomicorp.com/installers/atomic | sudo bash
 sudo apt update
 sudo apt install ossec-hids-server -y
 
-## 4) Configurazione Ubuntu-optimized
+### 4) Configurazione Ubuntu-optimized
 
-sudo nano /var/ossec/etc/ossec.conf
+```xml
+<!-- Log solo Ubuntu -->
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/auth.log</location>
+</localfile>
 
-<!-- Solo log Ubuntu -->
-<localfile><log_format>syslog</log_format><location>/var/log/auth.log</location></localfile>
-<localfile><log_format>syslog</log_format><location>/var/log/syslog</location></localfile>
+<localfile>
+  <log_format>syslog</log_format>
+  <location>/var/log/syslog</location>
+</localfile>
 
-<!-- Active Response aggressivo -->
+<!-- Active Response level 5 -->
 <active-response>
   <command>firewall-drop</command>
   <location>local</location>
   <level>5</level>
   <timeout>1800</timeout>
 </active-response>
+
 
 ## 5) Hardening specifico
 
