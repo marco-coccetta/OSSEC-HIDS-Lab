@@ -11,13 +11,19 @@ Threat hunting su attacchi reali
 
 ## Architettura
 
-Azure (West Europe)
-├── RG: RG-CyberLab  
-├── VM: Ubuntu 22.04 LTS (B1s, IP pubblico: VM-Suricata)
-│   ├── OSSEC HIDS v3.7.0 (standalone server)
-│   ├── Syscheck realtime (/etc, /usr/bin)
-│   └── Active Response (level 5)
-└── NSG: SSH esposto (simula ambiente reale)
+Azure West Europe
+├── Resource Group: RG-CyberLab
+├── Virtual Machine: Ubuntu 22.04 LTS (B1s)
+│   ├── Nome: VM-Suricata
+│   ├── IP pubblico: <your-public-ip>
+│   ├── OSSEC HIDS v3.7.0 (standalone)
+│   │   ├── Syscheck: /etc, /usr/bin (realtime)
+│   │   ├── Log analysis: /var/log/auth.log
+│   │   └── Active Response: iptables DROP (level 5)
+│   └── Network Security Group:
+│       └── Inbound: SSH (22) → Open (test ambiente reale)
+└── Storage: Screenshots + log estratti
+
 
 ## Guida riproducibile
 
