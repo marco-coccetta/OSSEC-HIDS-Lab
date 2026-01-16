@@ -67,8 +67,8 @@ sudo /var/ossec/bin/ossec-control restart
 
 watch -n 2 "tail -3 /var/ossec/logs/alerts/alerts.log && iptables -L | grep DROP"
 
-Risultati tipici (dal mio lab)
-Attacchi reali rilevati
+## Risultati tipici (dal mio lab)
+## Attacchi reali rilevati
 
 209.38.102.112: 40+ tentativi (test, ubuntu, guest, oracle)
 134.199.194.122: postgres brute force
@@ -77,19 +77,19 @@ Attacchi reali rilevati
 Rule 5710 (level 5): Invalid user login
 Status: All IPs BLOCKED (Active Response)
 
-Test FIM Syscheck
+## Test FIM Syscheck
 
 echo "TEST" >> /etc/motd
 
 Rule 550 (level 7): Integrity checksum changed for '/etc/motd'
 MD5: a561687... → a60f88a... (Size: 13→26)
 
-Active Response Log
+## Active Response Log
 
 Active response 'firewall-drop' executed for 209.38.102.112
 iptables: DROP 209.38.102.112 (1800s timeout)
 
-Skills dimostrate
+## Skills dimostrate
 OSSEC HIDS deployment e troubleshooting (repository, chroot DNS)
 
 Ubuntu-optimized configuration (no logcollector errors)
