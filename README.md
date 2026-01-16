@@ -63,7 +63,7 @@ sudo apt install ossec-hids-server -y
   <level>5</level>
   <timeout>1800</timeout>
 </active-response>
-
+```
 
 ## 5) Hardening specifico
 
