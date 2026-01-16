@@ -21,21 +21,21 @@ Azure (West Europe)
 
 ## Guida riproducibile
 
-1) Azure VM deployment
+## 1) Azure VM deployment
 Portale Azure → Virtual Machines → Ubuntu 22.04 → B1s → SSH key → NSG SSH pubblico.
 
-2) Accesso e preparazione
+## 2) Accesso e preparazione
 
 ssh azureuser@IP_VM
 sudo apt update && sudo apt upgrade -y
 
-3) Installazione OSSEC
+## 3) Installazione OSSEC
 
 wget -q -O - https://updates.atomicorp.com/installers/atomic | sudo bash
 sudo apt update
 sudo apt install ossec-hids-server -y
 
-4) Configurazione Ubuntu-optimized
+## 4) Configurazione Ubuntu-optimized
 
 sudo nano /var/ossec/etc/ossec.conf
 
@@ -51,7 +51,7 @@ sudo nano /var/ossec/etc/ossec.conf
   <timeout>1800</timeout>
 </active-response>
 
-5) Hardening specifico
+## 5) Hardening specifico
 
 # DNS chroot fix
 sudo cp /etc/resolv.conf /var/ossec/etc/
@@ -63,7 +63,7 @@ sudo chmod -R 770 /var/ossec/queue
 
 sudo /var/ossec/bin/ossec-control restart
 
-6) SOC Dashboard live
+## 6) SOC Dashboard live
 
 watch -n 2 "tail -3 /var/ossec/logs/alerts/alerts.log && iptables -L | grep DROP"
 
